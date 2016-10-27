@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{login}}'s details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+  <ion-list>
+    <ion-item>
+      <ion-label>Followers</ion-label>
+      <ion-badge item-right>{{user?.followers}}</ion-badge>
+    </ion-item>
+     <ion-item>
+      <ion-label>Following</ion-label>
+      <ion-badge item-right>{{user?.following}}</ion-badge>
+    </ion-item>
+     <ion-item>
+      <ion-label>Repos</ion-label>
+      <ion-badge item-right>{{user?.public_repos}}</ion-badge>
+    </ion-item>
+     <ion-item>
+      <ion-label>Gists</ion-label>
+      <ion-badge item-right>{{user?.public_gists}}</ion-badge>
+    </ion-item>
+  </ion-list>
+
+  <ion-row *ngFor="let i of rows">
+    <ion-col *ngFor="let follower of followers | slice:(i*3):(i+1)*3" width-33>
+      <div class="row responsive-md">
+        <img [src]="follower.avatar_url" width="100%" /> {{follower.login}}
+        <br> Rating: {{follower.public_repos}}
+      </div>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
